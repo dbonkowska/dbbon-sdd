@@ -1,0 +1,8 @@
+{
+  "name": "dbbon-sdd",
+  "description": "Spec-driven development workflow: GitHub Issue to spec to TDD plan to implementation to review to documented patterns, with specs and accumulated knowledge kept in an Obsidian vault rather than the repo.",
+  "version": "1.0.0",
+  "author": {
+    "name": "dbonkowska"
+  }
+}
