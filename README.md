@@ -2,9 +2,9 @@
 
 A spec-driven development workflow for Claude Code, as a plugin.
 
-Six commands run a feature from idea to closed issue: GitHub Issue → spec → TDD plan →
-implementation → review → documented patterns. Specs, plans, reviews and accumulated
-knowledge live in an Obsidian vault; the repo stays code-only.
+Seven commands run a feature from idea to closed issue: GitHub Issue → spec → TDD plan →
+implementation → review → recall → documented patterns. Specs, plans, reviews and
+accumulated knowledge live in an Obsidian vault; the repo stays code-only.
 
 ## Commands
 
@@ -15,6 +15,7 @@ knowledge live in an Obsidian vault; the repo stays code-only.
 | `/dbbon-sdd:plan` | `plan.md` — TDD steps, derived from the spec |
 | `/dbbon-sdd:implement` | Code, one red/green/commit cycle per step |
 | `/dbbon-sdd:review` | `cr.md` — review against the spec, plus pattern candidates |
+| `/dbbon-sdd:recall` | `recall.md` — the feature rebuilt from memory, corrected |
 | `/dbbon-sdd:document` | Approved patterns, constitution line, issue comment + close |
 
 Run them in that order. Each one tells you what to run next.
@@ -83,7 +84,7 @@ be republished, such as course exercises. Absent means `spec`.
 ## Requirements
 
 - `gh`, authenticated. Only `new-issue` requires a GitHub remote to exist; `plan`,
-  `implement` and `review` never call `gh` at all.
+  `implement`, `review` and `recall` never call `gh` at all.
 - An Obsidian vault, or any directory tree — nothing depends on Obsidian itself.
 
 ## Why it's shaped this way
@@ -103,6 +104,14 @@ An issue captures intent before you understand the problem; the spec captures it
 Planning from the issue means planning from the less-informed document, and `review` then
 checks the implementation against the spec for the same reason.
 
+**`recall` exists because the other six commands only train recognition.** In every other
+step you read something Claude produced and approve it, which builds the ability to
+recognise a good design and not the ability to produce one. So one step inverts: you answer
+four prompts from memory with no priming, Claude marks them and corrects only what's wrong,
+and `recall.md` is written in your words rather than its own. The page that matters is the
+short list at the bottom of where you were off — that's your error pattern, and it's the
+only part worth re-reading before the next feature.
+
 **Config splits three ways.** Generic workflow in the plugin, project conventions in
 `{project}/.claude/dbbon-sdd.md`, machine paths in `~/.claude/dbbon-sdd-local.md`. One
 combined file forces the whole thing private as soon as any single value is — a vault
@@ -117,7 +126,7 @@ under NDA. The workflow still wants a public record, so `brief` publishes what t
 config key only decides which text gets drafted; the actual safety mechanism is that
 nothing is pushed without you confirming it first.
 
-**Commands are user-invoked only.** All six carry `disable-model-invocation: true`. These
+**Commands are user-invoked only.** All seven carry `disable-model-invocation: true`. These
 create issues, write files and run test suites — nothing here should start because a
 model inferred it was a good idea.
 

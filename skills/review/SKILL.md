@@ -139,5 +139,5 @@ Show the user:
 1. The issues found (if any) — these should be addressed before moving on
 2. The pattern candidates — ask which to approve for `document` to write up
 
-If there are blocking issues: "Fix these before running `/dbbon-sdd:document`."
-If the review is clean: "Run `/dbbon-sdd:document` to close out the feature."
+If there are blocking issues: "Fix these before running `/dbbon-sdd:recall`."
+If the review is clean: "Run `/dbbon-sdd:recall` to rebuild the feature from memory before closing it out."

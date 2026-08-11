@@ -97,7 +97,7 @@ Get-ChildItem "{vault_base}\{vault_folder}" -Directory | Where-Object { $_.Name 
 **No project detection.** Earlier versions ran `gh repo view --json name -q .name` and
 matched the result against a block in a shared config file. That is gone — the config is
 in the project, so the project is already known. A consequence worth relying on: `plan`,
-`implement` and `review` never invoke `gh`, and work on a repo with no remote.
+`implement`, `review` and `recall` never invoke `gh`, and work on a repo with no remote.
 
 **Config is read, never written** — apart from the two scaffold cases above, which always
 stop rather than continue.

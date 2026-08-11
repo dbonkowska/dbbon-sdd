@@ -1,5 +1,5 @@
 ---
-description: "[Step 6] Finalize the feature — write approved patterns, update the constitution, close out the GitHub Issue."
+description: "[Step 7] Finalize the feature — write approved patterns, update the constitution, close out the GitHub Issue."
 disable-model-invocation: true
 ---
 
@@ -36,6 +36,7 @@ Get-Content "{vault_base}\{vault_folder}\{N} - {Folder Name}\cr.md" -Raw
 If no CR file found: "Run `/dbbon-sdd:review` first."
 
 Also read the current state of:
+- `{vault_base}\{vault_folder}\{N} - {Folder Name}\recall.md` (skip if absent)
 - `{principles}`
 - `{vault_base}\{vault_folder}\Constitution.md` (skip if absent)
 - `{vault_base}\{vault_folder}\Patterns.md` (skip if absent)
@@ -44,7 +45,11 @@ Also read the current state of:
 
 ## Step 2: Write approved patterns
 
-Present the pattern candidates from the CR one at a time. For each:
+Present the pattern candidates from the CR, plus anything `recall.md` surfaced, one at a
+time. A candidate the user named themselves during `recall` carries more weight than one the
+review inferred — it survived them trying to reconstruct the feature from memory.
+
+For each:
 
 ```
 Pattern: {name}
